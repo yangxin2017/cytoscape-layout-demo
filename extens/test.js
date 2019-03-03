@@ -66,16 +66,16 @@
         //cy.remove('[type = "chrom"], [type = "snpG"]');
         cy.edges().classes('');
   
-        // Finding and splitting up the different element types
+        // 循环所有点，随机赋值坐标点
         var nodes = cy.nodes();
         nodes.forEach((n)=>{
             n.position({x: Math.random() * bb.w, y: Math.random() * bb.h});
         });
+
+
         if( options.fit ) {
             cy.fit( options.padding );
         }
-  
-  
         // ==================
         // Finish the Layout!
         // ==================
