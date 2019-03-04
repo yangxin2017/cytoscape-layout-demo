@@ -422,3 +422,26 @@ function importLayout() {
         loadCytoscape(options);
     };
 }
+
+var ishide = false;
+$("#hidetest").click(function(){
+
+    var eles = cy.elements();
+
+    for(let k in eles){
+        let e = eles[k];
+        if(e.data){
+            //console.log(e, e.data().type);
+            let tp = e.data().type;
+            if(tp == 'rds'){
+                ishide ? e.show() : e.hide();
+                let egs = e.connectedEdges();
+                for(let i=0;i<egs.length;i++){
+                    ishide ? egs[i].show() : egs[i].hide();
+                }
+            }
+        }
+    }
+
+    ishide = !ishide;
+});
